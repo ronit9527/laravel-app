@@ -1,0 +1,56 @@
+        <nav class="navbar navbar-expand-lg navbar-dark mx-auto">
+            <div class="navbar-brand-wrapper">
+                <a class="navbar-brand" href="/">
+                    <img src="{{ asset('images/tedx_ntua_logo.png') }}" alt="TEDx NTUA Logo" />
+                </a>
+                <div class="d-block d-lg-none navbar-flags navbar-flags-left">
+                    <a class="flagLink el" href="{{ getLocalizedURL('el') }}" hreflang="el"></a>
+                    <a class="flagLink en" href="{{ getLocalizedURL('en') }}" hreflang="en"></a>
+                </div>
+            </div>
+
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHotdog" aria-controls="navbarHotdog" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hotdog-container">
+                    <span class="hotdog hotdog-1"></span>
+                    <span class="hotdog hotdog-2"></span>
+                    <span class="hotdog hotdog-3"></span>
+                    <span class="triangle"></span>
+                </div>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarHotdog">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link{{ active('home') }}" href="/">{{ trans('general.nav.home') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{{ active('speakers') }}" href="/speakers">{{ trans('general.nav.speakers') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{{ active('schedule') }}" href="/schedule">{{ trans('general.nav.schedule') }}</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link{{ active('sponsors') }}" href="/sponsors">{{ trans('general.nav.sponsors') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{{ active('team') }}" href="/team">{{ trans('general.nav.team') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{{ active('about') }}" href="/about">{{ trans('general.nav.about') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{{ active('contact') }}" href="/contact">{{ trans('general.nav.contact') }}</a>
+                    </li>
+                    <li class="nav-item get-tickets">
+                        <a class="nav-link" href="/tickets">{{ trans('general.nav.gettickets') }}</a>
+                    </li>
+                </ul>
+                <div class="d-none d-lg-block navbar-flags navbar-flags-right ml-3">
+                    <a id="lang-switch" class="flagLink {{ getLocale() }}" href="{{ getLocalizedURL(getLocale()) }}" hreflang="{{ getLocale() }}" role="button" aria-controls="#lang"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="lang-dropdown" id="lang">
+                <a class="flagLink el" href="{{ getLocalizedURL('el') }}" hreflang="el"> Ελληνικά</a>
+                <a class="flagLink en" href="{{ getLocalizedURL('en') }}" hreflang="en"> English</a>
+            </div>
+        </nav>

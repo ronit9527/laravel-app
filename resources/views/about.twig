@@ -1,0 +1,70 @@
+{% extends isPjax is defined and isPjax == true ? "pjax.twig" : "theme.twig" %}
+{% block title -%}
+	{{ trans('general.about.title') }}
+{%- endblock %}
+{% block description -%}
+	{{ trans('general.about.description') }}
+{%- endblock %}
+{% block content %}
+<article class="about">
+	
+	<section class="content">
+
+		<div class="container-fluid  text-center">
+
+			<div class="row wow bounceInLeft">
+				<div class="col col-12 col-lg-9">
+					<h3 class="primary">{{ trans('general.about.tedx.title') }}</h3>
+					<h6 class="font-weight-bold">{{ trans('general.about.tedx.subtitle') }}</h6>
+					{{ trans('general.about.tedx.content') | raw }}
+				</div>
+
+				<div class="col col-12 col-lg-3 vertical-align">
+					<img src="{{ asset('images/about/tedx-logo.png') }}" class="grid-image">
+				</div>
+			</div>
+
+			<div class="row wow bounceInLeft">
+				<div class="col col-12 col-lg-9 vertical-align">
+						<img src="{{ asset('images/about/1.jpg') }}" class="grid-image">
+				</div>
+			</div>
+
+
+				<div class="row wow bounceInRight text-center">
+				<div class="col col-12 col-lg-9">
+
+					<h3 class="primary">{{ trans('general.about.ted.title') }}</h3>
+					{{ trans('general.about.ted.content') | raw }}
+
+				</div>
+
+				<div class="col col-12 col-lg-3 vertical-align">
+					<img src="{{ asset('images/about/ted-logo.png') }}" class="grid-image">
+				</div>
+
+			</div>
+
+			<div class="row wow bounceInRight">
+				<div class="col col-12 col-lg-9 vertical-align">
+					<img src="{{ asset('images/about/2.jpg') }}" class="grid-image">
+				</div>
+			</div>
+
+			<div class="row wow bounceInLeft">
+				<div class="col col-12 col-lg-9">
+					<h3 class="primary">{{ trans('general.about.tedxntua.title') }}</h3>
+					{{ trans('general.about.tedxntua.content') | raw }}
+
+				</div>
+
+				<div class="col col-12 col-lg-3 vertical-align">
+					<img src="{{ asset('images/chaos_logo.png') }}" class="grid-image">
+				</div>
+			</div>
+		</div>
+
+	</section>
+</article>
+
+{% endblock %}

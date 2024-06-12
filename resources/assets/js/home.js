@@ -1,0 +1,76 @@
+$(function(){
+
+	/* IMPORTANT: Use debounce with scroll events for better performance */
+
+	var sT, liveOffsetY, liveH
+
+	$(window).on("scroll resize", _.debounce(function() {
+
+		if($("#hero.live").length > 0) {
+
+			sT = $(window).scrollTop()
+
+			if(!$("#hero.live").hasClass("popup")) {
+				liveOffsetY = $("#live").offset().top,
+				liveH = $("#live").height()
+			}
+
+			if(!$("#hero.live").hasClass("popup")
+			&& !$("#hero.live").hasClass("no-popup")
+			&& sT > liveOffsetY + liveH / 2) {
+
+				$("#hero.live .live-container").fadeOut(400, function() {
+					$("#hero.live .liveInfo").css("padding-bottom", liveH)
+					$("#hero.live").addClass("popup")
+					$(this).fadeIn()
+				})
+
+			} else if($("#hero.live").hasClass("popup")
+				   && sT <= liveOffsetY + liveH / 2) {
+
+				$("#hero.live .live-container").fadeOut(400, function() {
+					$("#hero.live .liveInfo").css("padding-bottom", 0)
+					$("#hero.live").removeClass("popup")
+					$(this).fadeIn()
+				})
+
+			}
+
+		}
+
+	}))
+
+	$(document).on("click", ".live-container button.close", function(e) {
+
+		if($("#hero.live").hasClass("popup")) {
+
+			$("#hero.live .live-container").fadeOut(400, function() {
+				$("#hero.live .liveInfo").css("padding-bottom", 0)
+				$("#hero.live").removeClass("popup").addClass("no-popup")
+				$(this).fadeIn()
+			})
+
+		}
+
+	})
+
+    $(document).on("mouseover", "#hero .info a", function(e){
+
+        $(this).addClass("blink")
+
+    }).on("mouseout", "#hero .info a", function(e) {
+
+        $(this).removeClass("blink")
+
+    })
+
+	if($("article.home").length > 0) {
+
+		/* trigger home animations */
+		homeAnimations()
+
+		$("body > header").addClass("home")
+
+	}
+
+});

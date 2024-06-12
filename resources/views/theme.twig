@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="{{ asset('/favicon.png') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="canonical" href="{{ getNonLocalizedURL() }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="alternate" name="locale_url" class="pjax" hreflang="el" href="{{ getLocalizedURL('el') }}" />
+    <link rel="alternate" name="locale_url" class="pjax" hreflang="en" href="{{ getLocalizedURL('en') }}" />
+    <title>{% block title %}{% endblock %} | TEDxNTUA 2018</title>
+    <meta name="description" class="pjax" content="{% block description %}{% endblock %}">
+    <meta property="og:title" content="{{ block('title') }} | TEDxNTUA 2018" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ getNonLocalizedURL() }}" />
+    <meta property="og:image" content="{{ asset('images/tedxntua-black-600.png') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
+    <link rel="mask-icon" href="{{ asset('/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="theme-color" content="#202020">
+</head>
+
+<body>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0]
+            if (d.getElementById(id)) return
+            js = d.createElement(s)
+            js.id = id
+            js.src = 'https://connect.facebook.net/{{ getLocale() == "en" ? "en_US" : "el_GR" }}/sdk.js#xfbml=1&version=v2.12&appId=1758405557797854&autoLogAppEvents=1'
+            fjs.parentNode.insertBefore(js, fjs)
+        }(document, 'script', 'facebook-jssdk'))
+    </script>
+
+    <header class="dark">
+
+{{ include('layouts.partials.nav') }}
+
+    </header>
+
+    <main>
+
+{% block content %}{% endblock %}
+
+    </main>
+
+    <footer>
+{{ include('layouts.partials.footer') }}
+    </footer>
+
+    <div class="cookie-bar">
+        <div class="container-fluid mx-auto d-flex justify-content-between align-items-center">
+            <span class="description">{{ trans('general.cookies.description') | raw }}</span>
+            <a href="#" class="accept" id="accept-cookies" role="button">{{ trans('general.cookies.accept') }}</a>
+        </div>
+    </div>
+
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112098642-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || []
+        function gtag() {
+            dataLayer.push(arguments)
+        }
+        gtag('js', new Date())
+
+        gtag('config', 'UA-112098642-1')
+    </script>
+{% block scripts -%}
+{%- endblock %}
+
+</body>
+
+</html>

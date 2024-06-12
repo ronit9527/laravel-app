@@ -1,0 +1,71 @@
+{% extends isPjax is defined and isPjax == true ? "pjax.twig" : "theme.twig" %}
+{% block title -%}
+{{ trans('general.team.title') }}
+{%- endblock %}
+{% block description -%}
+{{ trans('general.team.description') }}
+{%- endblock %}
+{% block content %}
+<article class="team">
+	<section class="heading">
+		<h1>{{ trans('general.team.title') }}</h1>
+	</section>
+
+	<section class="content text-center">
+
+		<div class="container-fluid">
+			<blockquote class="quote h3">{{ trans('general.team.quote') }}</blockquote>
+		</div>
+
+		{% for key, teamlist in teams -%}
+		<h2 id="{{ key }}" data-tooltip="{{ trans('general.team.' ~ key ~ '_description') }}">{{ trans('general.team.' ~ key) }}</h2>
+
+		<div class="container-fluid">
+
+			{% for row in teamlist | batch(4) -%}
+			<div class="row vertical-align">
+				{% for person in row -%}
+				<div class="col col-6 col-lg-3">
+					<a href="mailto:{{ person.email }}" target="_blank">
+						<img class="img-fluid grid-image photo1" src="{{ person.img_src }}" alt="{{ person.name }}"/>
+						<img class="img-fluid grid-image photo2" src="{{ person.img_src_alt }}" alt="{{ person.name }}"/>
+						<h5>{{ person.formatted_name | raw }}</h5>
+					</a>
+				</div>
+				{% endfor -%}
+
+			</div>
+			{% endfor -%}
+
+		</div>
+
+		{% endfor %}
+
+		<div class="container-fluid thanks angle-brackets">
+			<div class="row justify-content-center">
+				<div class="col col-6 col-lg-3">
+					<a href="mailto:dora@telecom.ntua.gr" target="_blank">
+						<img class="img-fluid grid-image" src="{{ asset('images/team/varvarigou.jpg') }}" alt="{{ trans('general.team.varvarigou') }}"/>
+						<h5>{{ trans('general.team.varvarigou') | raw }}</h5>
+						<h6>{{ trans('general.team.varvarigou_role') }}</h6>
+					</a>
+				</div>
+				<div class="col col-6 col-lg-3">
+					<a href="mailto:augusta@mail.ntua.gr" target="_blank">
+						<img class="img-fluid grid-image" src="{{ asset('images/team/augusta.jpg') }}" alt="{{ trans('general.team.augusta') }}"/>
+						<h5>{{ trans('general.team.augusta') | raw }}</h5>
+						<h6>{{ trans('general.team.augusta_role') }}</h6>
+					</a>
+				</div>
+			</div>
+			<div class="row mt-4 mt-xl-5">
+				<div class="col col-12">
+					<p class="h4">{{ trans('general.team.thanks') }}</p>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</article>
+{% endblock %}

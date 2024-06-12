@@ -1,0 +1,94 @@
+{% extends isPjax is defined and isPjax == true ? "pjax.twig" : "theme.twig" %}
+{% block title -%}
+{{ trans('general.speakers.title') }}
+{%- endblock %}
+{% block description -%}
+{{ trans('general.speakers.description') }}
+{%- endblock %}
+{% block content %}
+
+<article class="speakers">
+	<section class="heading">
+		<h1>{{ trans('general.speakers.title') }}</h1>
+	</section>
+	<section class="content">
+
+	{%- if speakers | length %}
+	{% for key, speaker in speakers %}
+
+		<div id="{{ speaker.sid }}" class="speaker-container container-fluid angle-brackets">
+
+			<div class="speaker-header container-fluid">
+				<img src="/images/speakers/{{ speaker.img_src }}">
+				<h2>{{ speaker.name }} <a href="{{ speaker.link }}" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a></h2>
+				<h5>{{ speaker.occupation }}</h5>
+				{% if speaker.quote | length %}
+				<blockquote class="quote">{{ speaker.quote }}</blockquote>
+				{% endif %}
+			</div>
+
+			<div class="speaker-info container-fluid">
+				<div class="row mb-3">
+					<div class="col col-12">
+						<h3 class="text-center primary">{{ trans('general.speakers.talk') }} &bull; <a href="/schedule">{{ speaker.talk.event_prev }}</a></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-12">
+						<h3 class="text-center primary">{{ trans('general.speakers.bio') }}</h3>
+						{{ speaker.bio | markdown }}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+
+	<div id="ira" class="speaker-container container-fluid angle-brackets">
+		<h2 class="primary pb-3">{{ trans('general.ira.hostedby') }}</h2>
+
+		<div class="speaker-header container-fluid">
+			<img src="/images/speakers/katsouda-1.jpg">
+			<h2>{{ trans('general.ira.name') }} <a href="https://www.facebook.com/katsoudaira/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a></h2>
+			<h5>{{ trans('general.ira.occupation') }}</h5>
+		</div>
+
+		<div class="speaker-info container-fluid">
+			<div class="row">
+				<div class="col col-12">
+					<h3 class="text-center primary">{{ trans('general.speakers.bio') }}</h3>
+					{{ trans('general.ira.bio') | markdown }}
+				</div>
+			</div>
+		</div>
+	</div>
+	{%- else %}
+
+		<div class="container-fluid nospeakers-container">
+			<div class="row">
+				<div class="col col-12 wow bounceInRight">
+					<span class="empty-sign">&empty;</span>
+					<p>
+						{{ trans('general.speakers.nospeakers') | raw }}
+						<i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+					</p>
+				</div>
+			</div>
+		</div>
+
+	{%- endif %}
+
+		<div class="container-fluid speakers-footer">
+			<div class="row">
+				<div class="col col-12 wow bounceInLeft">
+					<h3>{{ trans('general.speakers.previous') }}</h3>
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list=PLd7-PjFC85gz9xYWxVVqTddWLg75c8jZU&showinfo=1"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</article>
+
+{% endblock %}

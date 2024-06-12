@@ -1,0 +1,320 @@
+{% extends isPjax is defined and isPjax == true ? "pjax.twig" : "theme.twig" %}
+{% block title -%}
+{{ trans('general.sponsors.title') }}
+{%- endblock %}
+{% block description -%}
+{{ trans('general.sponsors.description') }}
+{%- endblock %}
+{% block content %}
+<article class="sponsors">
+	<section class="heading">
+		<h1>{{ trans('general.sponsors.title') }}</h1>
+	</section>
+
+	<section class="content">
+		<h2>{{ trans('general.sponsors.rank.0') }}</h2>
+
+		<div class="container-fluid">
+
+			<div class="row vertical-align">
+
+				<div class="col col-12 col-lg-4">
+					<a href="http://www.acg.edu/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_deree.png') }}" srcset="{{ asset('images/sponsors/small/small_deree.png') }} 576w, {{ asset('images/sponsors/large/large_deree.png') }} 960w" alt="Deree College"></a>
+				</div>
+
+				<div class="col col-12 col-lg-4">
+					<a href="https://www.nestle.{{ getLocale() == "el" ? "gr" : "com" }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_nestle.png') }}" srcset="{{ asset('images/sponsors/small/small_nestle.png') }} 576w, {{ asset('images/sponsors/large/large_nestle.png') }} 960w" alt="Nestle"></a>
+				</div>
+
+				<div class="col col-12 col-lg-4">
+					<a href="http://centaur.ag/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_centaur.png') }}" srcset="{{ asset('images/sponsors/small/small_centaur.png') }} 576w, {{ asset('images/sponsors/large/large_centaur.png') }} 960w" alt="Centaur"></a>
+				</div>
+
+
+			</div>
+
+			<div class="row vertical-align">
+
+				<div class="col col-12 col-lg-4">
+					<a href="https://www.sap.com/{{ getLocale() == "el" ? "greece/index.html" : "corporate/en.html" }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_sap.png') }}" srcset="{{ asset('images/sponsors/small/small_sap.png') }} 576w, {{ asset('images/sponsors/large/large_sap.png') }} 960w" alt="SAP"></a>
+				</div>
+
+				<div class="col col-12 col-lg-4">
+					<a href="https://www.vodafonecu.gr" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_cu.png') }}" srcset="{{ asset('images/sponsors/small/small_cu.png') }} 576w, {{ asset('images/sponsors/large/large_cu.png') }} 960w" alt="Vodafone CU"></a>
+				</div>
+
+				<div class="col col-12 col-lg-4">
+					<a href="https://www.nbg.gr/{{ getLocale() }}/i-bank" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_nbg_' ~ getLocale() ~ '.png') }}" srcset="{{ asset('images/sponsors/small/small_nbg_' ~ getLocale() ~ '.png') }} 576w, {{ asset('images/sponsors/large/large_nbg_' ~ getLocale() ~ '.png') }} 960w" alt="National Bank of Greece"></a>
+				</div>
+
+			</div>
+
+			<div class="row vertical-align">
+
+				<div class="col col-12 col-lg-4">
+					<a href="http://www.minoselevators.com/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_minos-elevators.png') }}" srcset="{{ asset('images/sponsors/small/small_minos-elevators.png') }} 576w, {{ asset('images/sponsors/large/large_minos-elevators.png') }} 960w" alt="Minos Elevators"></a>
+				</div>
+
+				<div class="col col-12 col-lg-4">
+					<a href="http://www.bosch-home.{{ getLocale() == "el" ? "gr" : "com" }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_bosch.png') }}" srcset="{{ asset('images/sponsors/small/small_bosch.png') }} 576w, {{ asset('images/sponsors/large/large_bosch.png') }} 960w" alt="BOSCH"></a>
+				</div>
+
+			</div>
+
+		</div>
+
+		<h2>{{ trans_choice('general.sponsors.rank.1', 2) }}</h2>
+
+		<div class="container-fluid">
+
+			<div class="row vertical-align">
+
+				<div class="col col-12 col-lg-4">
+					<a href="https://{{ getLocale() }}.aegeanair.com/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_aegean-airlines.png') }}" srcset="{{ asset('images/sponsors/small/small_aegean-airlines.png') }} 576w, {{ asset('images/sponsors/large/large_aegean-airlines.png') }} 960w" alt="Aegean Airlines"></a>
+				</div>
+
+				<div class="col col-12 col-lg-4">
+					<a href="https://www.uber.com/{{ getLocale() }}-GR/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_uber.png') }}" srcset="{{ asset('images/sponsors/small/small_uber.png') }} 576w, {{ asset('images/sponsors/large/large_uber.png') }} 960w" alt="Uber"></a>
+				</div>
+
+			</div>
+
+		</div>
+
+		<h2>{{ trans('general.sponsors.rank.2') }}</h2>
+
+		<div class="container-fluid">
+
+			<div class="row vertical-align">
+
+				<div class="col col-12 col-lg-3">
+					<a href="http://mellongroup.com" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_mellon.png') }}" srcset="{{ asset('images/sponsors/small/small_mellon.png') }} 576w, {{ asset('images/sponsors/large/large_mellon.png') }} 960w" alt="Mellon Group"></a>
+				</div>
+
+				<div class="col col-12 col-lg-3">
+					<a href="https://www.koutsodontis.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_koutsodontis.png') }}" srcset="{{ asset('images/sponsors/small/small_koutsodontis.png') }} 576w, {{ asset('images/sponsors/large/large_koutsodontis.png') }} 960w" alt="Koutsodontis"></a>
+				</div>
+
+				<div class="col col-12 col-lg-3">
+					<a href="https://www.helpe.gr/{{ getLocale() }}/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_helpe.png') }}" srcset="{{ asset('images/sponsors/small/small_helpe.png') }} 576w, {{ asset('images/sponsors/large/large_helpe.png') }} 960w" alt="Hellenic Petroleum"></a>
+				</div>
+
+				<div class="col col-12 col-lg-3">
+					<a href="http://www.athenslegalfirm.gr{{ getLocale() == "el" ? "" : "/en" }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_athens-legal-firm.png') }}" srcset="{{ asset('images/sponsors/small/small_athens-legal-firm.png') }} 576w, {{ asset('images/sponsors/large/large_athens-legal-firm.png') }} 960w" alt="Athens Legal Firm"></a>
+				</div>
+
+			</div>
+
+		</div>
+
+		<h2>{{ trans('general.sponsors.rank.3') }}</h2>
+
+		<div class="container-fluid">
+
+			<div class="row vertical-align">
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.sas.com/{{ getLocale() == "el" ? "el_gr" : "en_us" }}/home.html" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_sas.png') }}" srcset="{{ asset('images/sponsors/small/small_sas.png') }} 576w, {{ asset('images/sponsors/large/large_sas.png') }} 960w" alt="sas"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://www.ktimakokotou.gr/?lang={{ getLocale() }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_aKtimaKokotou.png') }}" srcset="{{ asset('images/sponsors/small/small_aKtimaKokotou.png') }} 576w, {{ asset('images/sponsors/large/large_aKtimaKokotou.png') }} 960w" alt="Ktima G. Kokotou"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://www.molto.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_molto.png') }}" srcset="{{ asset('images/sponsors/small/small_molto.png') }} 576w, {{ asset('images/sponsors/large/large_molto.png') }} 960w" alt="Molto"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.skag.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_skag.png') }}" srcset="{{ asset('images/sponsors/small/small_skag.png') }} 576w, {{ asset('images/sponsors/large/large_skag.png') }} 960w" alt="SKAG"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.johnniewalker.com/{{ getLocale() == "el" ? "el-gr" : "en-us" }}/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_johnnie-walker.png') }}" srcset="{{ asset('images/sponsors/small/small_johnnie-walker.png') }} 576w, {{ asset('images/sponsors/large/large_johnnie-walker.png') }} 960w" alt="Johnnie Walker"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.hothot.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_hot_hot.png') }}" srcset="{{ asset('images/sponsors/small/small_hot_hot.png') }} 576w, {{ asset('images/sponsors/large/large_hot_hot.png') }} 960w" alt="hothot"></a>
+				</div>
+
+			</div>
+
+			<div class="row vertical-align">
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://www.tuvunu.com/{{ getLocale() }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_tuvunu.png') }}" srcset="{{ asset('images/sponsors/small/small_tuvunu.png') }} 576w, {{ asset('images/sponsors/large/large_tuvunu.png') }} 960w" alt="Tuvunu"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://www.klidarithmos.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_klidarithmos.png') }}" srcset="{{ asset('images/sponsors/small/small_klidarithmos.png') }} 576w, {{ asset('images/sponsors/large/large_klidarithmos.png') }} 960w" alt="Κλειδάριθμος"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.e-food.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_efood.png') }}" srcset="{{ asset('images/sponsors/small/small_efood.png') }} 576w, {{ asset('images/sponsors/large/large_efood.png') }} 960w" alt="efood"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.delta.gr/?lang={{ getLocale() }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_delta.png') }}" srcset="{{ asset('images/sponsors/small/small_delta.png') }} 576w, {{ asset('images/sponsors/large/large_delta.png') }} 960w" alt="ΔΕΛΤΑ"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://nissos.beer/{{ getLocale() }}/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_nissos.png') }}" srcset="{{ asset('images/sponsors/small/small_nissos.png') }} 576w, {{ asset('images/sponsors/large/large_nissos.png') }} 960w" alt="Νήσος"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.ben-jerry.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_ben_jerry.png') }}" srcset="{{ asset('images/sponsors/small/small_ben_jerry.png') }} 576w, {{ asset('images/sponsors/large/large_ben_jerry.png') }} 960w" alt="ben_jerry"></a>
+				</div>
+				
+			</div>
+
+			<div class="row vertical-align">
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.lavdas.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_lavdas.png') }}" srcset="{{ asset('images/sponsors/small/small_lavdas.png') }} 576w, {{ asset('images/sponsors/large/large_lavdas.png') }} 960w" alt="lavdas"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.korres.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_korres.png') }}" srcset="{{ asset('images/sponsors/small/small_korres.png') }} 576w, {{ asset('images/sponsors/large/large_korres.png') }} 960w" alt="Korres"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.conferience.com/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_conferience.png') }}" srcset="{{ asset('images/sponsors/small/small_conferience.png') }} 576w, {{ asset('images/sponsors/large/large_conferience.png') }} 960w" alt="Conferience"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.papadopoulou.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_papadopoulou.png') }}" srcset="{{ asset('images/sponsors/small/small_papadopoulou.png') }} 576w, {{ asset('images/sponsors/large/large_papadopoulou.png') }} 960w" alt="Μπισκότα Παπαδοπούλου"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.plaisio.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_plaisio.png') }}" srcset="{{ asset('images/sponsors/small/small_plaisio.png') }} 576w, {{ asset('images/sponsors/large/large_plaisio.png') }} 960w" alt="Πλαίσιο"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.lacta.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_lacta.png') }}" srcset="{{ asset('images/sponsors/small/small_lacta.png') }} 576w, {{ asset('images/sponsors/large/large_lacta.png') }} 960w" alt="Lacta"></a>
+				</div>
+
+			</div>
+
+			<div class="row vertical-align">
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://www.tridentgum.com/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_trident.png') }}" srcset="{{ asset('images/sponsors/small/small_trident.png') }} 576w, {{ asset('images/sponsors/large/large_trident.png') }} 960w" alt="Trident"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://www.oreo.com/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_oreo.png') }}" srcset="{{ asset('images/sponsors/small/small_oreo.png') }} 576w, {{ asset('images/sponsors/large/large_oreo.png') }} 960w" alt="Oreo"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://apopantaygeias.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_pavlidis.png') }}" srcset="{{ asset('images/sponsors/small/small_pavlidis.png') }} 576w, {{ asset('images/sponsors/large/large_pavlidis.png') }} 960w" alt="Σοκολάτα Παυλίδης"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://www.anamnesia.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/sponsors/small/small_anamnesia.png') }}" srcset="{{ asset('images/sponsors/small/small_anamnesia.png') }} 576w, {{ asset('images/sponsors/large/large_anamnesia.png') }} 960w" alt="Anamnesia"></a>
+				</div>
+
+			</div>
+
+		</div>
+
+		<h2>{{ trans('general.sponsors.rank.4') }}</h2>
+
+		<div class="container-fluid">
+			<div class="row vertical-align">
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://naftemporiki.gr{{ getLocale() == "el" ? "" : "/english" }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_nafteboriki.png') }}" srcset="{{ asset('images/media/small/small_nafteboriki.png') }} 576w, {{ asset('images/media/large/large_nafteboriki.png') }} 960w" alt="Naftemporiki"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://pestaola.gr" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_pestaola.png') }}" srcset="{{ asset('images/media/small/small_pestaola.png') }} 576w, {{ asset('images/media/large/large_pestaola.png') }} 960w" alt="pestaola.gr"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://careernet.gr" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_careernet.png') }}" srcset="{{ asset('images/media/small/small_careernet.png') }} 576w, {{ asset('images/media/large/large_careernet.png') }} 960w" alt="CareerNet"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.kariera.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_kariera.png') }}" srcset="{{ asset('images/media/small/small_kariera.png') }} 576w, {{ asset('images/media/large/large_kariera.png') }} 960w" alt="Kariera.gr"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://frapress.gr" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_frapress.png') }}" srcset="{{ asset('images/media/small/small_frapress.png') }} 576w, {{ asset('images/media/large/large_frapress.png') }} 960w" alt="Frapress.gr"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://ek-mag.com/{{ getLocale() }}/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_ek.png') }}" srcset="{{ asset('images/media/small/small_ek.png') }} 576w, {{ asset('images/media/large/large_ek.png') }} 960w" alt="ek magazine"></a>
+				</div>
+
+			</div>
+
+			<div class="row vertical-align">
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.epixeiro.gr" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_epixeiro.png') }}" srcset="{{ asset('images/media/small/small_epixeiro.png') }} 576w, {{ asset('images/media/large/large_epixeiro.png') }} 960w" alt="επιχειρώ"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.{{ getLocale() == "el" ? "forfreegr.com" : "en.forfree.gr" }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_forfree.png') }}" srcset="{{ asset('images/media/small/small_forfree.png') }} 576w, {{ asset('images/media/large/large_forfree.png') }} 960w" alt="forfree.gr"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://e-employ.gr/{{ getLocale() }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_employ.png') }}" srcset="{{ asset('images/media/small/small_employ.png') }} 576w, {{ asset('images/media/large/large_employ.png') }} 960w" alt="Employ Career Counselors"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://www.paideia-ergasia.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_paideia-ergasia.png') }}" srcset="{{ asset('images/media/small/small_paideia-ergasia.png') }} 576w, {{ asset('images/media/large/large_paideia-ergasia.png') }} 960w" alt="Παιδεία – Εργασία"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://www.collegelink.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_collegelink.png') }}" srcset="{{ asset('images/media/small/small_collegelink.png') }} 576w, {{ asset('images/media/large/large_collegelink.png') }} 960w" alt="Collegelink"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://stand-out.gr" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_standout.png') }}" srcset="{{ asset('images/media/small/small_standout.png') }} 576w, {{ asset('images/media/large/large_standout.png') }} 960w" alt="Stand Out"></a>
+				</div>
+
+			</div>
+
+			<div class="row vertical-align">
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://unikorn.gr" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_unikorn.png') }}" srcset="{{ asset('images/media/small/small_unikorn.png') }} 576w, {{ asset('images/media/large/large_unikorn.png') }} 960w" alt="Unikorn"></a>
+				</div>
+
+			</div>
+
+		</div>
+
+		<h2>{{ trans('general.sponsors.rank.5') }}</h2>
+
+		<div class="container-fluid">
+
+			<div class="row vertical-align">
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://www.jobfairathens.gr/{{ getLocale() == "el" ? "" : "change_locale?id=en" }}" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_jfa.png') }}" srcset="{{ asset('images/media/small/small_jfa.png') }} 576w, {{ asset('images/media/large/large_jfa.png') }} 960w" alt="Job Fair Athens"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://uniqueminds.gr" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_um.png') }}" srcset="{{ asset('images/media/small/small_um.png') }} 576w, {{ asset('images/media/large/large_um.png') }} 960w" alt="Unique Minds"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://chemecon.org/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_chemecon.png') }}" srcset="{{ asset('images/media/small/small_chemecon.png') }} 576w, {{ asset('images/media/large/large_chemecon.png') }} 960w" alt="Chemecon"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="http://ntua.esngreece.gr/" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_esn.png') }}" srcset="{{ asset('images/media/small/small_esn.png') }} 576w, {{ asset('images/media/large/large_esn.png') }} 960w" alt="ESN NTUA Athens"></a>
+				</div>
+
+				<div class="col col-6 col-lg-2">
+					<a href="https://eestec.net" target="_blank"><img class="img-fluid grid-image hover-zoom" src="{{ asset('images/media/small/small_eestec.png') }}" srcset="{{ asset('images/media/small/small_eestec.png') }} 576w, {{ asset('images/media/large/large_eestec.png') }} 960w" alt="EESTEC LC Athens"></a>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+</article>
+{% endblock %}

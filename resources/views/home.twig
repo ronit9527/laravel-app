@@ -1,0 +1,174 @@
+{% extends isPjax is defined and isPjax == true ? "pjax.twig" : "theme.twig" %}
+{% block title -%}
+{{ trans('general.home.title') }}
+{%- endblock %}
+{% block description -%}
+{{ trans('general.home.description') }}
+{%- endblock %}
+{% block scripts %}
+	<script class="pjax" src="{{ mix('js/home-animations.js') }}"></script>
+{% endblock %}
+{% block content %}
+<article class="home">
+
+	{% if not isToday %}
+	<section id="hero">
+
+		<div class="section-content">
+			<h1>TEDxNTUA Chaos</h1>
+			<p class="info text-center">
+				<a href="/schedule"><span>{{ trans('general.home.hero.date') }}</span></a><br>
+				<a href="#map"><span>{{ trans('general.home.hero.venue') }}</span></a><br>
+				<a href="#map"><span>{{ trans('general.home.hero.address') }}</span></a>
+			</p>
+			<p class="tickets text-center">
+				<a href="/tickets">{{ trans('general.home.hero.tickets') }}</a>
+			</p>
+		</div>
+
+
+		<svg id="logo-animation">
+
+			<g class="container" transform="scale(1, -1) rotate(45)">
+				<g id="one" class="secondary">
+					<path d="M-225,30 L25,30 L25,280" />
+				</g>
+				<g id="two">
+					<path d="M225,-30 L-25,-30 L-25,-280" />
+				</g>
+				<g id="three">
+					<path d="M-127.5,10 L122.5,10 L122.5,260" />
+				</g>
+				<g id="four" class="secondary">
+					<path d="M127.5,-10 L-122.5,-10 L-122.5,-260" />
+				</g>
+			</g>
+
+		</svg>
+		<canvas id="lorenz" width="800" height="800"></canvas>
+	</section>
+
+	{%- else %}
+	<section id="hero" class="live">
+
+		<div class="section-content">
+			<h2 class="mt-3">{{ trans('general.home.live.wearelive') }}</h2>
+			<div class="liveInfo"></div>
+			<div class="live-container embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item" id="live" src="https://www.youtube.com/embed/K1A_PSOdmy8?ecver=1&autoplay=1" allow="encrypted-media" allowfullscreen></iframe>
+				<button type="button" class="close" aria-label="Close">
+					<i class="fa fa-times-circle" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>
+
+	</section>
+	{%- endif %}
+
+
+	<div class="home-sections container-fluid">
+
+		<div class="row no-gutters">
+			<!-- left full-height column (hidden on < md screens) -->
+			<div class="col d-none d-md-block col-md-2">
+				<div id="leftStripe"> </div>
+
+			</div>
+			<!-- main content -->
+			<div class="col col-12 col-md-8">
+
+				<section id="chaos" class="angle-brackets">
+
+					<h2><span class="typewriter" data-text="{{ trans('general.home.sections.chaos.title') }}"></span><img src="{{ asset('images/chaos.gif') }}" /></h2>
+					{{ trans('general.home.sections.chaos.desc') | raw }}
+
+				</section>
+
+				{% if speakers | length %}
+
+				<section id="speakers" class="angle-brackets">
+
+					<h2>{{ trans('general.home.sections.speakers.title') }}</h2>
+
+					<div class="container-fluid speaker-container">
+						<!-- don't add no-gutters to row since the padding/margin styles are defined in the CSS -->
+						{% for row in speakers | batch(4) -%}
+						<div class="row">
+							{% for speaker in row -%}
+							<div class="col col-6 col-xl-3">
+								<a href="/speakers#{{ speaker.sid }}">
+									<img class="photo1" src="/images/speakers/{{ speaker.img_src }}" />
+									<img class="photo2" src="/images/speakers/{{ speaker.img_src_alt }}" />
+									<div class="speaker-info">
+										<h3>{{ speaker.name }}</h3>
+										<p class="m-0">{{ speaker.occupation }}</p>
+									</div>
+								</a>
+							</div>
+							{% endfor -%}
+						</div>
+						{% endfor -%}
+						<h3 class="hostess">{{ trans('general.ira.hostedby') }}</h3>
+						<div class="row">
+							<div class="col col-6 col-xl-3">
+								<a href="/speakers#ira">
+									<img class="photo1" src="/images/speakers/katsouda-1.jpg" />
+									<img class="photo2" src="/images/speakers/katsouda-2.jpg" />
+									<div class="speaker-info">
+										<h3>{{ trans('general.ira.name') }}</h3>
+										<p class="m-0">{{ trans('general.ira.occupation') }}</p>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</section>
+
+				{% endif %}
+
+				<section id="auspices" class="angle-brackets">
+					<h2>{{ trans('general.home.sections.auspices.title') }}</h2>
+					<a href="https://www.ntua.gr">
+						<img class="img-fluid" src="/images/pyrforos.svg" alt="NTUA">
+					</a>
+				</section>
+
+				<section id="map" class="angle-brackets">
+
+					<h2>{{ trans('general.home.sections.map.title') }}</h2>
+					<p class="description">
+						{{ trans('general.home.sections.map.desc') | raw }}
+					</p>
+					<div class="map-container">
+						<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.597835648285!2d23.69414925138816!3d37.939824679630156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bc40a1e7f7ef%3A0x2d924baeaee6b696!2zzpXPhc6zzrXOvc6vzrTOtc65zr_OvSDOoM67zrHOvc63z4TOrM-BzrnOv869!5e0!3m2!1sel!2sgr!4v1517625169852" allowfullscreen></iframe>
+					</div>
+					<div class="container-fluid venue-gallery">
+						<div class="row top no-gutters">
+							<div class="col col-12 col-md-6">
+								<img src="{{ asset('/images/venue/2.jpg') }}">
+							</div>
+							<div class="col col-12 col-md-6">
+								<img src="{{ asset('/images/venue/1.jpg') }}">
+							</div>
+						</div>
+						<div class="row bottom no-gutters">
+							<div class="col col-12 col-md-12">
+								<img src="{{ asset('/images/venue/3.jpg') }}">
+							</div>
+						</div>
+					</div>
+
+				</section>
+
+			</div>
+			<!-- right full-height column (hidden on < md screens) -->
+			<div class="col d-none d-md-block col-md-2">
+				<div id="rightStripe"> </div>
+			</div>
+		</div>
+	</div>
+
+</article>
+
+{% endblock %}
