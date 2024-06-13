@@ -81,6 +81,20 @@ pipeline {
     }
 
     post {
+        success {
+            emailext(
+                to: "${EMAIL_RECIPIENTS}",
+                subject: "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Congratulations!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} was successful.\n\nJob Details: ${env.BUILD_URL}"
+            )
+        }
+        failure {
+            emailext(
+                to: "${EMAIL_RECIPIENTS}",
+                subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Alert!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.\n\nJob Details: ${env.BUILD_URL}"
+            )
+        }
         always {
             cleanWs() // Clean up workspace after the build
         }
