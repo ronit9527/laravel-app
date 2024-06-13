@@ -23,7 +23,14 @@ pipeline {
     stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "${SCANNER_HOME}/bin/sonar-scanner"
+                    sh "${scannerHome}/bin/sonar-scanner \
+                            -D sonar.projectVersion=1.0-SNAPSHOT \
+                            -D sonar.qualityProfile=testing \
+                            -D sonar.projectBaseDir=${WORKSPACE} \
+                            -D sonar.projectKey=laravel-application \
+                            -D sonar.sourceEncoding=UTF-8 \
+                            -D sonar.language=php \
+                            -D sonar.host.url=http://13.235.19.227:9000"
                 }
             }
         }
