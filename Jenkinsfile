@@ -1,0 +1,89 @@
+pipeline {
+    agent any
+
+    environment {
+        REGION = 'ap-south-1'
+        REPOSITORY_NAME = 'tedxntua'
+        CLUSTER = 'Laravel-app'
+        SERVICE_NAME = 'laravel-app-service'
+        IMAGE_TAG = 'latest1'
+        ECR_URI = "730335380624.dkr.ecr.${REGION}.amazonaws.com/${REPOSITORY_NAME}:${IMAGE_TAG}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the repository
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build Docker image
+                    sh '''
+                        docker build -t ${REPOSITORY_NAME}:${IMAGE_TAG} .
+                    '''
+                }
+            }
+        }
+
+        stage('Login to ECR') {
+            steps {
+                script {
+                    // Login to Amazon ECR
+                    sh '''
+                        aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ECR_URI}
+                    '''
+                }
+            }
+        }
+
+        stage('Tag and Push Docker Image') {
+            steps {
+                script {
+                    // Tag and push the Docker image to ECR
+                    sh '''
+                        docker tag ${REPOSITORY_NAME}:${IMAGE_TAG} ${ECR_URI}
+                        docker push ${ECR_URI}
+                    '''
+                }
+            }
+        }
+
+        stage('Update ECS Task Definition') {
+            steps {
+                script {
+                    // Update ECS Task Definition
+                    sh '''
+                        #!/bin/bash
+                        set -e
+
+                        CURRENT_TASK_DEFINITION_ARN=$(aws ecs describe-services --cluster ${CLUSTER} --services ${SERVICE_NAME} --query 'services[0].taskDefinition' --output text)
+                        echo "CURRENT_TASK_DEFINITION_ARN= $CURRENT_TASK_DEFINITION_ARN"
+                        CURRENT_TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition ${CURRENT_TASK_DEFINITION_ARN})
+                        EXISTING_EXECUTION_ROLE_ARN=$(echo "${CURRENT_TASK_DEFINITION}" | jq -r '.taskDefinition.executionRoleArn')
+                        EXISTING_NETWORK_MODE=$(echo "${CURRENT_TASK_DEFINITION}" | jq -r '.taskDefinition.networkMode')
+                        EXISTING_REQUIRES_COMPATIBILITIES=$(echo "${CURRENT_TASK_DEFINITION}" | jq -r '.taskDefinition.requiresCompatibilities[0]')
+                        EXISTING_CPU=$(echo "${CURRENT_TASK_DEFINITION}" | jq -r '.taskDefinition.cpu')
+                        EXISTING_MEMORY=$(echo "${CURRENT_TASK_DEFINITION}" | jq -r '.taskDefinition.memory')
+                        NEW_CONTAINER_DEFINITION=$(echo ${CURRENT_TASK_DEFINITION} | jq --arg ECR_URI "${ECR_URI}" '.taskDefinition.containerDefinitions | map(.image = $ECR_URI)')
+                        NEW_TASK_DEF=$(echo ${CURRENT_TASK_DEFINITION} | jq 'del(.taskDefinition.status, .taskDefinition.requiresAttributes, .taskDefinition.compatibilities, .taskDefinition.revision, .taskDefinition.registeredAt, .taskDefinition.registeredBy, .taskDefinition.taskDefinitionArn) | .taskDefinition.containerDefinitions = '"${NEW_CONTAINER_DEFINITION}"' | .taskDefinition.family = "laravel-app-TD"')
+                        TASK_DEF_OUTPUT=$(aws ecs register-task-definition --family "laravel-app-TD" --container-definitions "${NEW_CONTAINER_DEFINITION}" --execution-role-arn "${EXISTING_EXECUTION_ROLE_ARN}" --network-mode "${EXISTING_NETWORK_MODE}" --requires-compatibilities "${EXISTING_REQUIRES_COMPATIBILITIES}" --cpu "${EXISTING_CPU}" --memory "${EXISTING_MEMORY}")
+                        NEW_TASK_DEFINITION_ARN=$(echo "${TASK_DEF_OUTPUT}" | jq -r '.taskDefinition.taskDefinitionArn')
+                        aws ecs update-service --cluster ${CLUSTER} --service ${SERVICE_NAME} --task-definition ${NEW_TASK_DEFINITION_ARN}
+                        echo "Deployment successful!"
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs() // Clean up workspace after the build
+        }
+    }
+}
+
