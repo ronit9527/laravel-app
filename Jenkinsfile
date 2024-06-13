@@ -23,7 +23,7 @@ pipeline {
     stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner \
+                    sh "${SCANNER_HOME}/bin/sonar-scanner \
                             -D sonar.projectVersion=1.0-SNAPSHOT \
                             -D sonar.qualityProfile=testing \
                             -D sonar.projectBaseDir=${WORKSPACE} \
