@@ -112,20 +112,14 @@ pipeline {
         }
         failure {
             emailext(
-                smtpServer: "smtp.gmail.com",
-                smtpPort: "465",
                 to: "${EMAIL_RECIPIENTS}",
-                from: "ronitj1211@gmail.com",
                 subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Alert!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.\n\nJob Details: ${env.BUILD_URL}",
                 mimeType: 'text/html'
             )
         }
         always {
-                smtpServer: "smtp.gmail.com",
-                smtpPort: "465",
                 to: "${EMAIL_RECIPIENTS}",
-                from: "ronitj1211@gmail.com",
                 subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Alert!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.\n\nJob Details: ${env.BUILD_URL}",
                 mimeType: 'text/html'
