@@ -116,10 +116,12 @@ pipeline {
             )
         }
         always {
+            emailext(
                 to: "${EMAIL_RECIPIENTS}",
                 subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Alert!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.\n\nJob Details: ${env.BUILD_URL}",
                 mimeType: 'text/html'
+                )
             cleanWs() // Clean up workspace after the build
         }
     }
