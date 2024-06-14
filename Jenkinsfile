@@ -102,16 +102,18 @@ pipeline {
         success {
             emailext(
                 to: "${EMAIL_RECIPIENTS}",
+                from: "ronitj1211@gmail.com",
                 subject: "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Congratulations!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} was successful.\n\nJob Details: ${env.BUILD_URL}"
+                body: "Congratulations!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} was successful.\n\nJob Details: ${env.BUILD_URL}",
                 mimeType: 'text/html'
             )
         }
         failure {
             emailext(
                 to: "${EMAIL_RECIPIENTS}",
+                from: "ronitj1211@gmail.com",
                 subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Alert!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.\n\nJob Details: ${env.BUILD_URL}"
+                body: "Alert!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.\n\nJob Details: ${env.BUILD_URL}",
                 mimeType: 'text/html'
             )
         }
