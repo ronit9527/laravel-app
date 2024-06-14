@@ -99,29 +99,13 @@ pipeline {
     }
 
     post {
-        success {
-            emailext(
-                to: "${EMAIL_RECIPIENTS}",
-                subject: "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Congratulations!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} was successful.\n\nJob Details: ${env.BUILD_URL}",
-                mimeType: 'text/html'
-            )
-        }
-        failure {
-            emailext(
-                to: "${EMAIL_RECIPIENTS}",
-                subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Alert!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.\n\nJob Details: ${env.BUILD_URL}",
-                mimeType: 'text/html'
-            )
-        }
+        success {  
+             mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Success: Project name -> ${env.JOB_NAME}", to: "ronitj1211@gmail.com";  
+         }  
+         failure {  
+             mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Fail: Project name -> ${env.JOB_NAME}", to: "ronitj1211@gmail.com";  
+         }  
         always {
-            emailext(
-                to: "${EMAIL_RECIPIENTS}",
-                subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Alert!\n\nThe build for ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.\n\nJob Details: ${env.BUILD_URL}",
-                mimeType: 'text/html'
-                )
             cleanWs() // Clean up workspace after the build
         }
     }
