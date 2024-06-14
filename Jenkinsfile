@@ -8,7 +8,7 @@ pipeline {
         SERVICE_NAME = 'laravel-app-service'
         IMAGE_TAG = 'latest1'
         ECR_URI = "730335380624.dkr.ecr.${REGION}.amazonaws.com/${REPOSITORY_NAME}:${IMAGE_TAG}"
-        EMAIL_RECIPIENTS = "ronit.jadhav@neosoftmail.com" 
+        EMAIL_RECIPIENTS = "himanshuwagh23@gmail.com" 
         SCANNER_HOME = tool 'Sonar'
     }
 
