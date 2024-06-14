@@ -30,7 +30,7 @@ pipeline {
                             -D sonar.projectKey=laravel-application \
                             -D sonar.sourceEncoding=UTF-8 \
                             -D sonar.language=php \
-                            -D sonar.host.url=http://13.235.19.227:9000"
+                            -D sonar.host.url=http://laravel.infydevops.work.gd:9000"
                 }
             }
         }
